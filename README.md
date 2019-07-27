@@ -1,3 +1,3 @@
 # Endpoint for Aquafish
 
-This is for integrated between Arduino devices and application.
+Aquafish API is created for integrated between Arduino devices and application.
