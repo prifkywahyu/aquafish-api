@@ -3,9 +3,9 @@ class Database{
  
     // Specify your own database credentials
     private $host = "localhost";
-    private $db_name = "id10042464_sensor";
-    private $username = "id10042464_aquafish";
-    private $password = "aquafish2019";
+    private $db_name = "fedmeeco_aquafish";
+    private $username = "fedmeeco_aquafish";
+    private $password = "Jakarta*13";
     public $conn;
  
     // Get the database connection

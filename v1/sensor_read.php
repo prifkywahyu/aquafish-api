@@ -8,9 +8,9 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Refresh: 5");
 
 // Include database and object files
-include_once ('../api/config/database.php');
-include_once ('../api/objects/sensor.php');
- 
+require_once('../config/database.php');
+require_once('../objects/sensor.php');
+
 // Instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
@@ -19,25 +19,14 @@ $db = $database->getConnection();
 $sensor = new Sensor($db);
 
 $sensor->type = isset($_GET['type']) ? $_GET['type'] : die();
-$stmt = $sensor->gets();
-$num = $stmt->rowCount();
+$sensor->read();
 
-if($num>0){
-    $sensors_arr=array();
-    $sensors_arr["records"]=array();
- 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        extract($row);
- 
-        $sensor_item=array(
-            "type" => $type,
-            "value" => $value,
-            "status" => $status,
-            "created" => $created,
-        );
- 
-        array_push($sensors_arr["records"], $sensor_item);
-    }
+if($sensor->type!=null){
+    $sensors_arr = array(
+        "type" => $sensor->type,
+        "value" => $sensor->value,
+        "status" => $sensor->status,
+    );
  
     http_response_code(200); 
     echo json_encode($sensors_arr);
