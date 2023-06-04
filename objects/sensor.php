@@ -96,31 +96,31 @@ class Sensor {
         // }
 
         if ($getOne == 101 && $getTwo < 20 && !empty($getTwo) && !empty($getThree)) {
-        	$mail_subject = "[Alert] Temperature Sensor = $getTwo";
+            $mail_subject = "[Alert] Temperature Sensor = $getTwo";
             $mail_message = "Hai! Aquafish mendeteksi bahwa nilai Temperature Sensor Anda sekarang adalah $getTwo dan itu mengindikasikan dalam keadaan dibawah normal.<br><br>Tapi jangan khawatir, pompa akan bekerja untuk Anda dalam menaikkan suhu dengan cara mengisi air akuarium.<br><br>Terima kasih, Aquafish Team.";
             mailer($mail_subject, $mail_message);
         }
         elseif ($getOne == 101 && $getTwo > 30 && !empty($getThree)) {
-        	$mail_subject = "[Alert] Temperature Sensor = $getTwo";
+            $mail_subject = "[Alert] Temperature Sensor = $getTwo";
             $mail_message = "Hai! Aquafish mendeteksi bahwa nilai Temperature Sensor Anda sekarang adalah $getTwo dan itu mengindikasikan dalam keadaan diatas normal.<br><br>Tapi jangan khawatir, pompa akan bekerja untuk Anda dalam menurunkan suhu dengan cara mengurangi air akuarium.<br><br>Terima kasih, Aquafish Team.";
             mailer($mail_subject, $mail_message);
-         }
-         elseif ($getOne == 202 && $getTwo > 12 && !empty($getThree)) {
-        	$mail_subject = "[Alert] Turbidity Sensor = $getTwo";
+        }
+        elseif ($getOne == 202 && $getTwo > 12 && !empty($getThree)) {
+            $mail_subject = "[Alert] Turbidity Sensor = $getTwo";
             $mail_message = "Hai! Aquafish mendeteksi bahwa nilai Turbidity Sensor Anda sekarang adalah $getTwo dan itu mengindikasikan dalam keadaan air yang keruh.<br><br>Tapi jangan khawatir, pompa akan bekerja untuk Anda dalam meningkatkan kualitas air dengan cara menguras air akuarium.<br><br>Terima kasih, Aquafish Team.";
             mailer($mail_subject, $mail_message);
-         }
-         elseif ($getOne == 303 && $getTwo < 14 && !empty($getTwo) && !empty($getThree)) {
-        	$mail_subject = "[Alert] Water Level Sensor = $getTwo";
+        }
+        elseif ($getOne == 303 && $getTwo < 14 && !empty($getTwo) && !empty($getThree)) {
+            $mail_subject = "[Alert] Water Level Sensor = $getTwo";
             $mail_message = "Hai! Aquafish mendeteksi bahwa nilai Water Level Sensor Anda berada pada $getTwo dan itu indikasi ketinggian air dalam keadaan dibawah normal.<br><br>Tapi jangan khawatir, pompa akan bekerja untuk Anda dalam menaikkan ketinggian air dengan cara mengisi air akuarium.<br><br>Terima kasih, Aquafish Team.";
             mailer($mail_subject, $mail_message);
-         }
-         elseif ($getOne == 303 && $getTwo > 23 && !empty($getThree)) {
-        	$mail_subject = "[Alert] Water Level Sensor = $getTwo";
+        }
+        elseif ($getOne == 303 && $getTwo > 23 && !empty($getThree)) {
+            $mail_subject = "[Alert] Water Level Sensor = $getTwo";
             $mail_message = "Hai! Aquafish mendeteksi bahwa nilai Water Level Sensor Anda berada pada $getTwo dan itu indikasi ketinggian air dalam keadaan diatas normal.<br><br>Tapi jangan khawatir, pompa akan bekerja untuk Anda dalam menurunkan ketinggian air dengan cara menguras air akuarium.<br><br>Terima kasih, Aquafish Team.";
             mailer($mail_subject, $mail_message);
-         }
-         else {
+        }
+        else {
             $stmt->execute();
             return true;
         }
