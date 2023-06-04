@@ -11,11 +11,10 @@ header("Refresh: 5");
 require_once('../config/database.php');
 require_once('../objects/feeder.php');
 
-// Instantiate database and product object
+// Initialize database and object
 $database = new Database();
 $db = $database->getConnection();
 
-// Initialize object
 $feed = new Feeding($db);
 $feed->getFeed();
 
@@ -31,9 +30,8 @@ if ($feed->id != null) {
     http_response_code(200); 
     echo json_encode($feeding_arr);
 }
-
 else {
-    http_response_code(404); 
-    echo json_encode(array("message" => "Feeding scheduler is not found on database."));
+    http_response_code(404);
+    echo json_encode(array("message" => "Feeding scheduler is not found."));
 }
 ?>

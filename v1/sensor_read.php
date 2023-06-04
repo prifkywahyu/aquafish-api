@@ -11,17 +11,15 @@ header("Refresh: 5");
 require_once('../config/database.php');
 require_once('../objects/sensor.php');
 
-// Instantiate database and product object
+// Initialize database and object
 $database = new Database();
 $db = $database->getConnection();
 
-// Initialize object
 $sensor = new Sensor($db);
-
 $sensor->type = isset($_GET['type']) ? $_GET['type'] : die();
 $sensor->read();
 
-if($sensor->type!=null){
+if ($sensor->type != null) {
     $sensors_arr = array(
         "type" => $sensor->type,
         "value" => $sensor->value,
@@ -31,10 +29,8 @@ if($sensor->type!=null){
     http_response_code(200); 
     echo json_encode($sensors_arr);
 }
-
 else {
-    http_response_code(404);
- 
+    http_response_code(404); 
     echo json_encode(
         array("message" => "Sensor data is not found")
     );

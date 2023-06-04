@@ -1,7 +1,5 @@
 <?php
-
-class Feeding{
-    // Database connection and table name
+class Feeding {
     private $conn;
     private $table_name = "feeder";
 
@@ -12,11 +10,11 @@ class Feeding{
     public $end_min;
     public $delay;
 
-    public function __construct($db){
+    public function __construct($db) {
         $this->conn = $db;
     }
 
-	function getFeed(){
+    function getFeed() {
         $query = "SELECT * FROM feeder ORDER BY id DESC LIMIT 0,1";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -30,7 +28,7 @@ class Feeding{
         $this->delay = $row['delay'];
     }
 
-    function addFeed(){
+    function addFeed() {
         $query = "INSERT INTO feeder (start_hour, start_min, end_hour, end_min, delay) VALUES (:start_hour, :start_min, :end_hour, :end_min, :delay)";
         $stmt = $this->conn->prepare($query);
 
@@ -56,8 +54,7 @@ class Feeding{
             $getDelay = $_GET["delay"];
         }
 
-        // Executed query
-        if($stmt->execute()) {
+        if ($stmt->execute()) {
             return true;
         }
      
